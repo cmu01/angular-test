@@ -29,6 +29,10 @@ module.exports = {
         loaders: ['style', 'css']
       },
       {
+        test: /\.html$/,
+        loader: 'html-loader',
+      },
+      {
         test: /\.less$/,
         loaders: ['style', 'css', 'less']
       },
@@ -40,5 +44,11 @@ module.exports = {
         }
       },      
     ]
+  },
+  resolve: {
+    alias: {
+      resource: path.resolve('./src/resource'),
+      src: path.resolve('./src')
+    }
   }
 };

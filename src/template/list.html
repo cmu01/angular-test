@@ -1,0 +1,13 @@
+<ul ng-repeat="item in list">
+  <li>名字: {{item.name}} 价格: {{item.value | currency}} name: {{item.movie | uppercase}}</li>
+</ul>
+<table>
+  <tr ng-repeat="item in list">
+    <td>{{item.name}}</td>
+    <td>{{item.value}}</td>
+    <td>{{item.movie}}</td>
+  </tr>
+</table>
+<div ng-repeat="type in types">
+  <input type = {{type}} pattern="[a-zA-Z]" placeholder={{type}}/>
+</div>

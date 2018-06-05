@@ -4,7 +4,7 @@
   "description": "it is my first angular project",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --inline --content-base .",
+    "start": "webpack-dev-server --made --inline --content-base .",
     "dev": "webpack -d --watch",
     "prebuild": "rimraf dist",
     "build": "webpack -p"

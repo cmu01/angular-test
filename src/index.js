@@ -1,33 +1,16 @@
 import angular from 'angular';
 import ngRoute from 'angular-route';
-import home from './module/homePage.js'
+import home from './module/homePage.js';
+import main from './module/main.js';
 
-const app = angular.module('movie', ['ngRoute', 'home']);
-const ctrl = ($scope) => {
-  $scope.firstName = 'John';
-  $scope.lastName = 'Doe';
-};
+// ================ all modules should be inject into root module.====================
+const app = angular.module('movie', ['ngRoute', 'home', 'main']);
 
-class Ctrl {
-  constructor($scope) {
-    $scope.firstName = 'John';
-    $scope.lastName = 'Doe';
-    this.scope = $scope;
-    this.text = 'Component Test';
-  }
-
-  $onInit() {
-    console.log(this.text, this.scope.firstName);
-  }
-};
-
-
-app.controller('Ctrl', ['$scope', Ctrl])
-.config(['$routeProvider', ($routeProvider) => {
+app.config(['$routeProvider', ($routeProvider) => {
   $routeProvider.when('/', {
-    template: '<ads-movie></ads-movie>',
-    controller: 'Ctrl'
+    template: '<ads-movie></ads-movie>'
   })
-  .when('/printers', {template:'这是打印机页面'})
+  .when('/main', {template:'<ads-main></ads-main>'})
+  .when('/resource', {template:''})
   .otherwise({redirectTo:'/'});
 }])
