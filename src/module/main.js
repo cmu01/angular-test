@@ -7,6 +7,10 @@ const main = angular.module('main', ['list']);
 class MainController1 {
   constructor($scope) {
     $scope.title = 'Component Test';
+    $scope.reset = () => {
+      $scope.user.firstName = '';
+      $scope.user.lastName = '';
+    };
   }
 
   $onInit() {
@@ -16,6 +20,10 @@ class MainController1 {
 
 const MainController = ($scope) => {
   $scope.title = 'Component Test';
+  $scope.reset = () => {
+    $scope.user.firstName = '';
+    $scope.user.lastName = '';
+  };
 }
 
 main

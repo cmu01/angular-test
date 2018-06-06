@@ -1,13 +1,16 @@
-<ul ng-repeat="item in list">
+<ul ng-repeat="item in list track by $index">
   <li>名字: {{item.name}} 价格: {{item.value | currency}} name: {{item.movie | uppercase}}</li>
 </ul>
-<table>
-  <tr ng-repeat="item in list">
+
+<table class = "ad-table">
+  <!-- $odd奇数,$even 偶数-->
+  <tr ng-repeat="item in list" ng-style="{'background-color': $even ? '#f1f1f1' : 'white'}">
     <td>{{item.name}}</td>
     <td>{{item.value}}</td>
     <td>{{item.movie}}</td>
   </tr>
 </table>
+
 <div ng-repeat="type in types">
   <input type = {{type}} pattern="[a-zA-Z]" placeholder={{type}}/>
 </div>

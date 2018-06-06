@@ -26,7 +26,8 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loaders: ['style', 'css']
+        // css-loader是处理css文件，style-loader是把css内嵌到浏览器
+        loader:  ['style-loader', 'css-loader']
       },
       {
         test: /\.html$/,
@@ -48,7 +49,9 @@ module.exports = {
   resolve: {
     alias: {
       resource: path.resolve('./src/resource'),
-      src: path.resolve('./src')
-    }
+      src: path.resolve('./src'),
+      css: path.resolve('./src/css')
+    },
+    extensions: ['', '.js', '.jsx']
   }
 };
