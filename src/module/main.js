@@ -1,8 +1,8 @@
 import angular from 'angular';
 import mainTmp from '../template/main.html';
-import list from './list.js';
+import subList from './subList.js';
 
-const main = angular.module('main', ['list']);
+const main = angular.module('main', ['subList']);
 
 class MainController1 {
   constructor($scope) {

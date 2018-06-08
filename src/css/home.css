@@ -1,0 +1,42 @@
+html, body {
+  height: 95%;
+  width: 95%;
+}
+
+li {
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+li:hover {
+  border-bottom: 1px gray solid;
+}
+
+nav{
+  height: 50px;
+  margin: 10px;
+  width: 100%;
+  background: aquamarine;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  margin: 10px;
+  width: 100%;
+  height: calc(100% - 70px);
+}
+
+aside {
+  flex: 1;
+  height: 100%;
+  box-sizing: border-box;
+  border: solid 1px orange;
+}
+
+article {
+  flex: 9;
+  height: 100%;
+  box-sizing: border-box;
+  border: solid 1px greenyellow;
+}

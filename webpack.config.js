@@ -36,22 +36,20 @@ module.exports = {
       {
         test: /\.less$/,
         loaders: ['style', 'css', 'less']
-      },
+      },  
       {
-        test: /\.(ico|jpg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)(\?.*)?$/,        
-        loader: 'file',
-        query: {
-          name: '[path][name].[ext]'
-        }
-      },      
+        test: /(\.png|\.jpeg|.\ttf|\.jpg)$/,
+        loader: 'url-loader'
+      }   
     ]
   },
   resolve: {
     alias: {
       resource: path.resolve('./src/resource'),
       src: path.resolve('./src'),
-      css: path.resolve('./src/css')
+      css: path.resolve('./src/css'),
+      template: path.resolve('./src/template')
     },
-    extensions: ['', '.js', '.jsx']
+    extensions: ['.js', '.jsx']
   }
 };
