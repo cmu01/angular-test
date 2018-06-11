@@ -36,27 +36,55 @@ class HomeController {
 //     template: homeTmp
 //   });
 
-const homeController = function($element, $scope) {
+function homeController() {
   this.text = 'Component Test';
-  $scope.$on('/change/movie', (e, _config) => {
-    $scope.selected = _config;
-  });
-  $scope.onChange = (index) => {
+  // $scope.$on('/change/movie', (e, _config) => {
+  //   $scope.selected = _config;
+  // });
+  this.onChanged = function(index) {
     console.log(index);
-    $scope.selected = index;
+    this.selected = index;
   };
 };
 
 home
-  // .controller('HomeController', ['$element', '$scope', HomeController])
-  .component('adsMovie', {
-    controller: homeController,
-    template: homeTmp,
-    bindings: {
-      firstName: '<',
-      selected: '&',
-      onChange: '&'
+  .directive('adsMovie', () => {
+    return {
+      replace: true,
+      restrict: 'E',
+      template: homeTmp,
+      scope: {
+        movie: '&'
+      },
+      controller: ($scope) => {
+        $scope.movie = {
+          text: 'Component Test',
+          onChanged: () => {
+            console.log(index);
+          }
+        };
+        // $scope.text = 'Component Test';
+
+        // $scope.onChanged = function(index) {
+        //   console.log(index);
+        //   $scope.selected = index;
+        // };
+      },
+      link: ($scope) => {
+
+      }
     }
-  });
+
+  })
+  // .controller('HomeController', ['$element', '$scope', HomeController])
+  // .component('adsMovie', {
+  //   template: homeTmp,
+  //   controller: homeController,
+  //   bindings: {
+  //     text: '&',
+  //     selected: '&',
+  //     onChange: '&'
+  //   }
+  // });
 
 export default home;

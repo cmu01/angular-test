@@ -4,41 +4,62 @@ import names from 'resource/movies.json';
 
 const list = angular.module('list', []);
 
-function componentCtrl($scope, $rootScope) {
-  $scope.names = names;
-  $scope.changeView = (index) => {
-    // console.log(index);
+function componentCtrl() {
+  const ctrl = this;
+
+  ctrl.names = names;
+
+  // ctrl.$onInit = function () {
+  //   ctrl.changeView = function(index) {
+  //     //console.log(this.parentCtrl.onChange({index}));
+  //     // $scope.selected = index;
+  //     //  $rootScope.$broadcast('/change/movie', index);
+  //     parentCtrl.onChange(index);
+  //   };
+  // };
+  ctrl.changeView = function(index) {
+    //console.log(this.parentCtrl.onChange({index}));
     // $scope.selected = index;
-  //  $rootScope.$broadcast('/change/movie', index);
-    this.onChange(index)
+    //  $rootScope.$broadcast('/change/movie', index);
+    ctrl.parentCtrl.onChange(index);
   };
   console.log(names);
 };
 
-class ComponentCtrl {
-  constructor($scope) {
-    $scope.names = names;
-    $scope.changeView = (index) => {
-      // console.log(index);
-      // $scope.selected = index;
-    //  $rootScope.$broadcast('/change/movie', index);
-      this.onChange(index)
-    };
-  }
-
-  $onInit() {
-    // this.onChange(index);
-  }
-}
-
 list
-  .component('nameList', {
-    controller: ComponentCtrl,
+.directive('nameList', function() {
+  return {
+    replace: true,
+    restrict: 'E',
+    scope: {
+      movie: '&'
+    },
+    controller: ($scope) => {
+      $scope.names = names;
+      $scope.vm = {
+        changeView: function(index) {
+          console.log('click', index);
+        }
+      };
+      $scope.init = function(){
+        console.log('init');
+      }
+    },
     template: listTmp,
-    bindings: {
-      selected: '&',
-      onChange: '@'
+    link: ($scope) => {
     }
-  });
+  }
+})
+  // .component('nameList', {
+  //   require: {
+  //     parentCtrl: '^^adsMovie'
+  //   },
+  //   template: listTmp,
+  //   controller: componentCtrl,
+  //   bindings: {
+  //     selected: '&',
+  //     onChange: '@'
+  //   }
+  // });
 
 export default list;

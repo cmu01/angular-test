@@ -1,5 +1,6 @@
-<ul ng-repeat="item in names track by $index">
-  <li ng-click="changeView(item)">
+
+<ul>
+  <li ng-repeat="item in names track by $index" ng-click="vm.changeView(item)">
     {{item.name}}
   </li>
 </ul>
